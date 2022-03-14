@@ -89,11 +89,9 @@ def main():
                     output_text = output_text + input_text[i]
                     bracket_open = True
                 elif (input_text[i] == "<" and bracket_open):
-                    translator = Translator()
-
                     if is_not_blank(text_to_translate):
+                        translator = Translator()
                         ##special chars
-
                         #   <	&lt;	Less than symbol.'<>&"\''
                         #   >	&gt;	Greater than sign.
                         #   &	&amp;	Ampersand symbol.
@@ -108,15 +106,16 @@ def main():
 
                         translation = translator.translate(text_to_translate, dest='en')
                         print(f"{text_to_translate} -> {translation.text}")
+                        output = translation.text
                         ##special chars
-                        text_to_translate = text_to_translate.replace("<","&lt;")
-                        text_to_translate = text_to_translate.replace( ">", "&gt;")
-                        text_to_translate = text_to_translate.replace( "&", "&amp;")
-                        text_to_translate = text_to_translate.replace( '\"', "&quot;")
-                        text_to_translate = text_to_translate.replace("'", "&apos;")
+                        output = output.replace("<", "&lt;")
+                        output = output.replace(">", "&gt;")
+                        output = output.replace("&", "&amp;")
+                        output = output.replace('\"', "&quot;")
+                        output = output.replace("'", "&apos;")
 
 
-                        output_text = output_text + translation.text
+                        output_text = output_text + output
                     else:
                         output_text = output_text + text_to_translate
 
