@@ -107,15 +107,15 @@ def main():
                         text_to_translate = text_to_translate.replace("&apos;", "'")
 
                         translation = translator.translate(text_to_translate, dest='en')
+                        print(f"{text_to_translate} -> {translation.text}")
                         ##special chars
-
                         text_to_translate = text_to_translate.replace("<","&lt;")
                         text_to_translate = text_to_translate.replace( ">", "&gt;")
                         text_to_translate = text_to_translate.replace( "&", "&amp;")
                         text_to_translate = text_to_translate.replace( '\"', "&quot;")
                         text_to_translate = text_to_translate.replace("'", "&apos;")
 
-                        print(f"{text_to_translate} -> {translation.text}")
+
                         output_text = output_text + translation.text
                     else:
                         output_text = output_text + text_to_translate
